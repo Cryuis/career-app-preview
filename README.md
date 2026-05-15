@@ -33,23 +33,39 @@ While the project was inspired by my experience working on career-related system
 
 ---
 
+## AI Integration
+
+This project uses [Puter.js](https://puter.com?utm_source=chatgpt.com) for AI-powered resume analysis.
+
+Puter.js is used to:
+
+* analyze extracted resume content
+* generate ATS compatibility insights
+* identify technical skills
+* detect skill gaps
+* generate AI interview questions
+
+The AI implementation in this project is independently built and uses a different integration approach, prompt structure, and architecture from systems I worked with during my internship.
+
+---
+
 ## Getting Started
 
 First, install dependencies:
 
-```bash id="n7p7a7"
+```bash id="u3tf9m"
 npm install
 ```
 
 Run the development server:
 
-```bash id="89i2vx"
+```bash id="k8db48"
 npm run dev
 ```
 
 Open:
 
-```bash id="gkt6lz"
+```bash id="6bq11s"
 http://localhost:3000
 ```
 
@@ -57,7 +73,7 @@ with your browser to see the result.
 
 You can start editing the application by modifying:
 
-```bash id="0e7ywr"
+```bash id="vxu7b2"
 app/page.js
 ```
 
@@ -67,7 +83,7 @@ The page auto-updates as you edit the file.
 
 ## Project Structure
 
-```bash id="u3kwb9"
+```bash id="j3xx8z"
 app/
  ├── api/
  │    ├── ai/
@@ -113,7 +129,7 @@ Handles:
 1. User uploads a PDF resume
 2. Resume file is converted into Base64 format
 3. OCR extracts readable text from the resume
-4. AI analyzes the extracted resume content
+4. Puter.js AI analyzes the extracted resume content
 5. ATS insights and recommendations are displayed in the dashboard
 
 ---
@@ -130,7 +146,7 @@ Handles:
 
 ## Example AI Response
 
-```json id="10dr0u"
+```json id="wrtjlwm"
 {
   "fitScore": 85,
   "skills": [
@@ -181,6 +197,7 @@ To learn more about the technologies used in this project:
 * Next.js Documentation
 * React Documentation
 * Tailwind CSS Documentation
+* Puter.js Documentation
 
 ---
 

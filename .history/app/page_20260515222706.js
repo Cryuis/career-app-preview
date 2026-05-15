@@ -96,6 +96,9 @@ export default function Home() {
         setError(data.error || "OCR service request failed");
         return;
       }
+        setError(data.error);
+        return;
+      }
 
       if (!data.extractedText) {
         setError("No text was extracted from the PDF");

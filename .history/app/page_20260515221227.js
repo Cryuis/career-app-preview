@@ -81,19 +81,10 @@ export default function Home() {
         }),
       });
 
-      const rawResponse = await response.text();
-      let data;
+      const data = await response.json();
 
-      try {
-        data = JSON.parse(rawResponse);
-      } catch (parseError) {
-        console.error("OCR API parse error:", parseError, rawResponse);
-        setError("Unexpected OCR API response");
-        return;
-      }
-
-      if (!response.ok || data.error) {
-        setError(data.error || "OCR service request failed");
+      if (data.error) {
+        setError(data.error);
         return;
       }
 
@@ -141,7 +132,7 @@ export default function Home() {
                   <Target className="w-5 h-5 text-white" />
                 </div>
                 <span className="text-xl font-semibold text-white">
-                  Career Agent Preview
+                  career AGent PReview
                 </span>
               </div>
               <div className="text-sm text-gray-400 animate-fade-in-delayed">
@@ -373,9 +364,6 @@ export default function Home() {
               </div>
             </div>
           )}
-          <div className="max-w-7xl mx-auto px-6 pb-8 text-center">
-            <p className="text-xs text-gray-500">Created by Cyrus Cavero</p>
-          </div>
         </div>
       </div>
     </div>

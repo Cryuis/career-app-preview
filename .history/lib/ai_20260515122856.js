@@ -62,19 +62,8 @@ export async function getAIAnalysis(
     const raw = response?.message?.content || "{}";
 
     try {
-      // First try to parse the entire response as JSON
       return JSON.parse(raw);
     } catch {
-      // If that fails, try to extract JSON from within the text
-      const jsonMatch = raw.match(/\{[\s\S]*\}/);
-      if (jsonMatch) {
-        try {
-          return JSON.parse(jsonMatch[0]);
-        } catch {
-          // If JSON extraction fails, return fallback
-        }
-      }
-
       return {
         fitScore: 70,
         skills: [],

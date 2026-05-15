@@ -74,7 +74,7 @@ export async function getAIAnalysis(
           // If JSON extraction fails, return fallback
         }
       }
-
+      
       return {
         fitScore: 70,
         skills: [],

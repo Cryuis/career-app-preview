@@ -13,7 +13,7 @@ const geistMono = Geist_Mono({
 
 export const metadata = {
   title: "Career Agent Preview",
-  description: "A Preview of the Career Agent Project that I made",
+  description: "A Preview of the Career Agent",
 };
 
 export default function RootLayout({ children }) {

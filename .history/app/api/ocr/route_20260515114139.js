@@ -1,11 +1,9 @@
-import { NextResponse } from "next/server";
-
 export async function POST(req) {
   try {
     const { pdfFile } = await req.json();
 
     if (!pdfFile) {
-      return NextResponse.json(
+      return Response.json(
         { error: "Missing pdfFile in request" },
         { status: 400 },
       );
@@ -14,10 +12,7 @@ export async function POST(req) {
     const ocrApiKey = process.env.OCR_SPACE_KEY || process.env.OCR_API_KEY;
 
     if (!ocrApiKey) {
-      return NextResponse.json(
-        { error: "Missing OCR API key" },
-        { status: 500 },
-      );
+      return Response.json({ error: "Missing OCR API key" }, { status: 500 });
     }
 
     // BASE64 → BLOB
@@ -45,7 +40,7 @@ export async function POST(req) {
     if (!ocrResponse.ok) {
       const details = await ocrResponse.text();
       console.error("OCR request failed:", ocrResponse.status, details);
-      return NextResponse.json(
+      return Response.json(
         { error: "OCR service request failed", details },
         { status: 502 },
       );
@@ -72,14 +67,14 @@ export async function POST(req) {
 
     console.log("EXTRACTED TEXT:", extractedText);
 
-    return NextResponse.json({
+    return Response.json({
       success: true,
       extractedText,
     });
   } catch (err) {
     console.error("API ERROR:", err);
 
-    return NextResponse.json(
+    return Response.json(
       {
         error: "Resume processing failed",
         details: err.message,

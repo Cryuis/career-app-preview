@@ -1,28 +1,21 @@
-import { NextResponse } from "next/server";
-
 export async function POST(req) {
   try {
     const { pdfFile } = await req.json();
 
-    if (!pdfFile) {
-      return NextResponse.json(
-        { error: "Missing pdfFile in request" },
-        { status: 400 },
-      );
-    }
-
     const ocrApiKey = process.env.OCR_SPACE_KEY || process.env.OCR_API_KEY;
 
     if (!ocrApiKey) {
-      return NextResponse.json(
-        { error: "Missing OCR API key" },
-        { status: 500 },
-      );
+      return Response.json({ error: "Missing OCR API key" }, { status: 500 });
     }
 
     // BASE64 → BLOB
     const base64Data = pdfFile.split(",")[1];
-    const byteArray = Buffer.from(base64Data, "base64");
+
+    const byteCharacters = atob(base64Data);
+
+    const byteArray = new Uint8Array(
+      [...byteCharacters].map((c) => c.charCodeAt(0)),
+    );
 
     const blob = new Blob([byteArray], {
       type: "application/pdf",
@@ -41,15 +34,6 @@ export async function POST(req) {
       method: "POST",
       body: form,
     });
-
-    if (!ocrResponse.ok) {
-      const details = await ocrResponse.text();
-      console.error("OCR request failed:", ocrResponse.status, details);
-      return NextResponse.json(
-        { error: "OCR service request failed", details },
-        { status: 502 },
-      );
-    }
 
     const ocrResult = await ocrResponse.json();
 
@@ -72,14 +56,14 @@ export async function POST(req) {
 
     console.log("EXTRACTED TEXT:", extractedText);
 
-    return NextResponse.json({
+    return Response.json({
       success: true,
       extractedText,
     });
   } catch (err) {
     console.error("API ERROR:", err);
 
-    return NextResponse.json(
+    return Response.json(
       {
         error: "Resume processing failed",
         details: err.message,

@@ -81,19 +81,10 @@ export default function Home() {
         }),
       });
 
-      const rawResponse = await response.text();
-      let data;
+      const data = await response.json();
 
-      try {
-        data = JSON.parse(rawResponse);
-      } catch (parseError) {
-        console.error("OCR API parse error:", parseError, rawResponse);
-        setError("Unexpected OCR API response");
-        return;
-      }
-
-      if (!response.ok || data.error) {
-        setError(data.error || "OCR service request failed");
+      if (data.error) {
+        setError(data.error);
         return;
       }
 
@@ -141,11 +132,11 @@ export default function Home() {
                   <Target className="w-5 h-5 text-white" />
                 </div>
                 <span className="text-xl font-semibold text-white">
-                  Career Agent Preview
+                  ResumeAI
                 </span>
               </div>
               <div className="text-sm text-gray-400 animate-fade-in-delayed">
-                Career Agent Preview
+                ATS Resume Analyzer
               </div>
             </div>
           </div>
@@ -159,10 +150,10 @@ export default function Home() {
               Powered by AI
             </div>
             <h1 className="text-5xl md:text-6xl font-bold text-white mb-6 leading-tight animate-slide-up">
-              Career Agent
+              ATS Resume
               <span className="bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent animate-gradient">
                 {" "}
-                Preview
+                Scanner
               </span>
             </h1>
             <p className="text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed animate-fade-in-delayed">
@@ -373,9 +364,6 @@ export default function Home() {
               </div>
             </div>
           )}
-          <div className="max-w-7xl mx-auto px-6 pb-8 text-center">
-            <p className="text-xs text-gray-500">Created by Cyrus Cavero</p>
-          </div>
         </div>
       </div>
     </div>

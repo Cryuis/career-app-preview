@@ -14,10 +14,7 @@ export async function POST(req) {
     const ocrApiKey = process.env.OCR_SPACE_KEY || process.env.OCR_API_KEY;
 
     if (!ocrApiKey) {
-      return NextResponse.json(
-        { error: "Missing OCR API key" },
-        { status: 500 },
-      );
+      return NextResponse.json({ error: "Missing OCR API key" }, { status: 500 });
     }
 
     // BASE64 → BLOB

@@ -206,7 +206,3 @@ To learn more about the technologies used in this project:
 The easiest way to deploy this Next.js application is through Vercel.
 
 ---
-
-## License
-
-MIT License

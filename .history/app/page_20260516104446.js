@@ -149,7 +149,7 @@ export default function Home() {
       <div className="relative min-h-screen">
         {/* HEADER */}
         <header className="border-b border-white/10 backdrop-blur-sm bg-black/20 animate-fade-in">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 py-3 sm:py-4">
+          <div className="max-w-7xl mx-auto px-6 py-4">
             <div className="flex items-center justify-between">
               <div className="flex items-center gap-3 animate-slide-down">
                 <div className="w-8 h-8 bg-gradient-to-r from-purple-500 to-pink-500 rounded-lg flex items-center justify-center animate-pulse-glow">
@@ -173,7 +173,7 @@ export default function Home() {
               <Sparkles className="w-4 h-4 animate-spin-slow" />
               Powered by AI
             </div>
-            <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold text-white mb-6 leading-tight animate-slide-up">
+            <h1 className="text-5xl md:text-6xl font-bold text-white mb-6 leading-tight animate-slide-up">
               Career Agent
               <span className="bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent animate-gradient">
                 {" "}
@@ -188,7 +188,7 @@ export default function Home() {
           {/* UPLOAD SECTION */}
           <div className="max-w-2xl mx-auto mb-16 animate-fade-in-delayed">
             <div
-              className={`relative border-2 border-dashed rounded-2xl p-8 sm:p-12 text-center transition-all duration-300 animate-float ${
+              className={`relative border-2 border-dashed rounded-2xl p-12 text-center transition-all duration-300 animate-float ${
                 isDragging
                   ? "border-purple-400 bg-purple-500/10 scale-105 shadow-2xl shadow-purple-500/20"
                   : "border-gray-600 hover:border-purple-400 hover:bg-white/5"
@@ -222,7 +222,7 @@ export default function Home() {
 
                 <label
                   htmlFor="pdf-upload"
-                  className="inline-flex w-full sm:inline-flex items-center justify-center gap-2 bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 px-8 py-4 rounded-xl font-medium text-white cursor-pointer transition-all duration-200 transform hover:scale-105 shadow-lg animate-pulse-slow"
+                  className="inline-flex items-center gap-2 bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 px-8 py-4 rounded-xl font-medium text-white cursor-pointer transition-all duration-200 transform hover:scale-105 shadow-lg animate-pulse-slow"
                 >
                   <FileText className="w-5 h-5" />
                   Choose PDF File
@@ -305,7 +305,7 @@ export default function Home() {
           {ocrResult?.aiAnalysis && (
             <div className="space-y-8 animate-fade-in-delayed">
               {/* SCORE CARD */}
-              <div className="bg-gradient-to-r from-purple-600/20 to-pink-600/20 backdrop-blur-sm border border-purple-500/20 rounded-2xl p-6 sm:p-8 text-center animate-slide-up">
+              <div className="bg-gradient-to-r from-purple-600/20 to-pink-600/20 backdrop-blur-sm border border-purple-500/20 rounded-2xl p-8 text-center animate-slide-up">
                 <div className="inline-flex items-center gap-2 bg-purple-500/20 px-4 py-2 rounded-full text-purple-300 text-sm font-medium mb-4">
                   <TrendingUp className="w-4 h-4" />
                   ATS Compatibility Score
@@ -324,7 +324,7 @@ export default function Home() {
 
               <div className="grid md:grid-cols-2 gap-8">
                 {/* SUMMARY */}
-                <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-4 sm:p-6 animate-slide-up">
+                <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-6 animate-slide-up">
                   <div className="flex items-center gap-3 mb-4">
                     <div className="w-10 h-10 bg-blue-500/20 rounded-lg flex items-center justify-center">
                       <Brain className="w-5 h-5 text-blue-400" />
@@ -339,7 +339,7 @@ export default function Home() {
                 </div>
 
                 {/* SKILLS */}
-                <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-4 sm:p-6 animate-slide-up">
+                <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-6 animate-slide-up">
                   <div className="flex items-center gap-3 mb-4">
                     <div className="w-10 h-10 bg-green-500/20 rounded-lg flex items-center justify-center">
                       <CheckCircle className="w-5 h-5 text-green-400" />
@@ -361,7 +361,7 @@ export default function Home() {
                 </div>
 
                 {/* GAPS */}
-                <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-4 sm:p-6 animate-slide-up">
+                <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-6 animate-slide-up">
                   <div className="flex items-center gap-3 mb-4">
                     <div className="w-10 h-10 bg-orange-500/20 rounded-lg flex items-center justify-center">
                       <AlertTriangle className="w-5 h-5 text-orange-400" />
@@ -383,7 +383,7 @@ export default function Home() {
                 </div>
 
                 {/* QUESTIONS */}
-                <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-4 sm:p-6 animate-slide-up">
+                <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-6 animate-slide-up">
                   <div className="flex items-center gap-3 mb-4">
                     <div className="w-10 h-10 bg-purple-500/20 rounded-lg flex items-center justify-center">
                       <MessageSquare className="w-5 h-5 text-purple-400" />

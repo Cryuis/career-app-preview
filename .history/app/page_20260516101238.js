@@ -280,16 +280,16 @@ export default function Home() {
                   disabled={isProcessing}
                   className="w-full bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 disabled:opacity-50 disabled:cursor-not-allowed py-4 rounded-xl font-semibold text-white text-lg transition-all duration-200 transform hover:scale-[1.02] shadow-lg"
                 >
-                  {isProcessing ? (
-                    <div className="flex items-center justify-center gap-3">
-                      <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin" />
-                      Analyzing Resume...
-                    </div>
-                  ) : (
-                    "Analyze Resume"
-                  )}
-                </button>
-              </div>
+                {isProcessing ? (
+                  <div className="flex items-center justify-center gap-3">
+                    <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin" />
+                    Analyzing Resume...
+                  </div>
+                ) : (
+                  "Analyze Resume"
+                )}
+              </button>
+            </div>
             )}
 
             {error && (

@@ -1,7 +1,6 @@
 export async function getAIAnalysis(
   resumeText,
   jobTitle = "Software Engineer",
-  jobDescription = "",
 ) {
   try {
     const text = resumeText.replace(/\s+/g, " ").slice(0, 3000);
@@ -14,9 +13,6 @@ export async function getAIAnalysis(
 
   Target Role:
   ${jobTitle}
-
-  Job Description:
-  ${jobDescription}
 
   Return ONLY valid JSON:
 
@@ -35,7 +31,7 @@ export async function getAIAnalysis(
   - Extract EVERY skill mentioned anywhere in the resume (job descriptions, projects, certifications, education, tools, and technologies). Do not omit any skills found in the text.
   - You may include skills that are directly and clearly implied by explicit resume wording (for example, "led a team" -> "Team Leadership"); only include inferred skills when unambiguously supported by the resume.
   - Normalize skill names (trim whitespace, de-duplicate, use Title Case) and sort them alphabetically.
-  - For "gaps", list missing key skills or experience relative to the Target Role and Job Description, using only resume content as evidence.
+  - For "gaps", list missing key skills or experience relative to the Target Role, using only resume content as evidence.
   - Output JSON only with no additional commentary or explanation.
 
   Answer now.

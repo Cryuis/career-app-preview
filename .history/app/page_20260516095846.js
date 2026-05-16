@@ -19,8 +19,6 @@ import { getAIAnalysis } from "@/lib/ai";
 
 export default function Home() {
   const [selectedFile, setSelectedFile] = useState(null);
-  const [jobRole, setJobRole] = useState("");
-  const [jobDescription, setJobDescription] = useState("");
   const [isDragging, setIsDragging] = useState(false);
   const [isProcessing, setIsProcessing] = useState(false);
   const [ocrResult, setOcrResult] = useState(null);
@@ -30,8 +28,6 @@ export default function Home() {
   const handleFileSelect = (file) => {
     if (file && file.type === "application/pdf") {
       setSelectedFile(file);
-      setJobRole("");
-      setJobDescription("");
       setOcrResult(null);
       setError(null);
     } else {
@@ -60,16 +56,6 @@ export default function Home() {
 
   const handleProcessResume = async () => {
     if (!selectedFile) return;
-
-    if (!jobRole.trim()) {
-      setError("Please enter the target job role before analyzing the resume.");
-      return;
-    }
-
-    if (!jobDescription.trim()) {
-      setError("Please enter a job description before analyzing the resume.");
-      return;
-    }
 
     setIsProcessing(true);
     setError(null);
@@ -118,8 +104,7 @@ export default function Home() {
 
       const aiAnalysis = await getAIAnalysis(
         data.extractedText,
-        jobRole,
-        jobDescription,
+        "Software Engineer",
       );
 
       setOcrResult({
@@ -249,47 +234,20 @@ export default function Home() {
             )}
 
             {selectedFile && (
-              <div className="mt-6 space-y-4 animate-slide-up">
-                <div className="grid gap-4">
-                  <div>
-                    <label className="block text-sm font-medium text-gray-200 mb-2">
-                      Target Job Role
-                    </label>
-                    <input
-                      value={jobRole}
-                      onChange={(e) => setJobRole(e.target.value)}
-                      placeholder="Software Engineer, Product Manager, etc."
-                      className="w-full rounded-2xl border border-white/10 bg-slate-950/80 px-4 py-3 text-white placeholder:text-gray-500 focus:border-purple-500 focus:outline-none focus:ring-2 focus:ring-purple-500/20"
-                    />
+              <button
+                onClick={handleProcessResume}
+                disabled={isProcessing}
+                className="w-full mt-6 bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 disabled:opacity-50 disabled:cursor-not-allowed py-4 rounded-xl font-semibold text-white text-lg transition-all duration-200 transform hover:scale-[1.02] shadow-lg animate-fade-in-delayed"
+              >
+                {isProcessing ? (
+                  <div className="flex items-center justify-center gap-3">
+                    <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin" />
+                    Analyzing Resume...
                   </div>
-                  <div>
-                    <label className="block text-sm font-medium text-gray-200 mb-2">
-                      Job Description
-                    </label>
-                    <textarea
-                      value={jobDescription}
-                      onChange={(e) => setJobDescription(e.target.value)}
-                      rows={4}
-                      placeholder="Describe the responsibilities, required experience, and key skills for the role."
-                      className="w-full rounded-2xl border border-white/10 bg-slate-950/80 px-4 py-3 text-white placeholder:text-gray-500 focus:border-purple-500 focus:outline-none focus:ring-2 focus:ring-purple-500/20"
-                    />
-                  </div>
-                </div>
-                <button
-                  onClick={handleProcessResume}
-                  disabled={isProcessing}
-                  className="w-full bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 disabled:opacity-50 disabled:cursor-not-allowed py-4 rounded-xl font-semibold text-white text-lg transition-all duration-200 transform hover:scale-[1.02] shadow-lg"
-                >
-                  {isProcessing ? (
-                    <div className="flex items-center justify-center gap-3">
-                      <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin" />
-                      Analyzing Resume...
-                    </div>
-                  ) : (
-                    "Analyze Resume"
-                  )}
-                </button>
-              </div>
+                ) : (
+                  "Analyze Resume"
+                )}
+              </button>
             )}
 
             {error && (
@@ -413,8 +371,11 @@ export default function Home() {
               </div>
             </div>
           )}
+          +{" "}
           <footer className="max-w-7xl mx-auto px-6 pb-8 text-center">
-            <p className="text-xs text-gray-500">Created by Cyrus Cavero</p>
+            <p className="text-xs text-gray-500">
+              Created by Cyrus Cavero
+            </p>{" "}
           </footer>
         </div>
       </div>

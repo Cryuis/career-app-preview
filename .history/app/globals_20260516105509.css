@@ -126,15 +126,8 @@
   }
   html {
     /* Use the font variables injected by next/font (set in app/layout.js) */
-    font-family:
-      var(--font-geist-sans),
-      ui-sans-serif,
-      system-ui,
-      -apple-system,
-      "Segoe UI",
-      Roboto,
-      "Helvetica Neue",
-      Arial;
+    font-family: var(--font-geist-sans), ui-sans-serif, system-ui, -apple-system,
+      'Segoe UI', Roboto, 'Helvetica Neue', Arial;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
@@ -143,9 +136,8 @@
   pre,
   kbd,
   samp {
-    font-family:
-      var(--font-geist-mono), ui-monospace, SFMono-Regular, Menlo, Monaco,
-      "Roboto Mono", "Courier New", monospace;
+    font-family: var(--font-geist-mono), ui-monospace, SFMono-Regular, Menlo,
+      Monaco, 'Roboto Mono', 'Courier New', monospace;
   }
 }
 
